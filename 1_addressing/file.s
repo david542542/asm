@@ -13,31 +13,31 @@ _start:
 
 
     # (1) Immediate mode
-    # mov $9,     %rbx    # Move the literal value 9 into %rbx;               p/d $rbx
-    # mov $0x16,  %rbx    # Move the literal value 22 (16 in hex) into %rbx   p/x $rbx
-    # mov $0b11,  %rbx    # Move the literal value 3 (11 in binary) into %rbx p/t $rbx (t is 'two')
+    mov $9,     %rbx    # Move the literal value 9 into %rbx;               p/d $rbx
+    mov $0x16,  %rbx    # Move the literal value 22 (16 in hex) into %rbx   p/x $rbx
+    mov $0b11,  %rbx    # Move the literal value 3 (11 in binary) into %rbx p/t $rbx (t is 'two')
     
 
-    # # (2) Register addressing mode
-    # mov %rbx,   %rax   # Copy the value from %rbx into %rax
+    # (2) Register addressing mode
+    mov %rbx,   %rax   # Copy the value from %rbx into %rax
 
 
-    # # (3) Base pointer addressing mode
-    # mov %rsp,   %rbp        # Normall we would also first do push %rbp, but not required here
-    # movq $22,   -8(%rbp)    # Move the value 22 into the memory address at rbp-8
-    # movq -8(%rbp), %rcx     # Move the value at memory address rbp-8 (22) into rdx
+    # (3) Base pointer addressing mode
+    mov %rsp,   %rbp        # Normall we would also first do push %rbp, but not required here
+    movq $22,   -8(%rbp)    # Move the value 22 into the memory address at rbp-8
+    movq -8(%rbp), %rcx     # Move the value at memory address rbp-8 (22) into rdx
 
 
-    # ## (4) Indirect addressing mode
-    # leaq -8(%rbp),  %rdx    # Move the address at rbp-8 into rdx
-    # movq (%rdx),    %r8     # Move the value of that memory address into r8
-    # movq %rdx,      %r9     # By comparison, see the value in r9 when using direct addressing mode
+    ## (4) Indirect addressing mode
+    leaq -8(%rbp),  %rdx    # Move the address at rbp-8 into rdx
+    movq (%rdx),    %r8     # Move the value of that memory address into r8
+    movq %rdx,      %r9     # By comparison, see the value in r9 when using direct addressing mode
 
 
-    ## (5) Referencing a symbol
-    # mov my_var,  %r10     # move the value of the symbol `my_var` (4) into %r10
-    # mov my_var(%rip),%r11 # same as above, but more efficient and the preferred way to do it
-    # mov $my_var, %r12     # move the address of the symbol `my_var` into r12 (same as leaq my_var, %r12)
+    # (5) Referencing a symbol
+    mov my_var,  %r10     # move the value of the symbol `my_var` (4) into %r10
+    mov my_var(%rip),%r11 # same as above, but more efficient and the preferred way to do it
+    mov $my_var, %r12     # move the address of the symbol `my_var` into r12 (same as leaq my_var, %r12)
 
 
     # (6) Indexed addressing mode (used to access array elements)
