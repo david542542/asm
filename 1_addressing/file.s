@@ -41,12 +41,19 @@ _start:
 
 
     # (6) Indexed addressing mode (used to access array elements)
+    # Format is: offset(base_register, index_register, scale)
     # Additionally, here is a very helpful answer for `movz`: https://stackoverflow.com/a/31115069/12283181
+
+    # (6a) Use a fixed offset and increment, note that base_register is empty
     movq $0, %rdi                       # we will use the %rdi register for our offsetting
-    movzw my_array(,%rdi,2),    %r13    # we move two bytes starting at the array my_array[0], and zero-fill into %r13
+    movzw my_array(,%rdi,2),    %r13    # the same as my_array[0], the '2' is the byte-size and fixed
+    inc %rdi                            
+    movzw my_array(,%rdi,2),    %r14    # same as above, but since we've incremented rdi, it's my_array[1]
+    
+    # (6b) We can also manually push our offsets, or use %rip-relative
     movzw my_array+6(,%rdi,2),  %r14    # we move two bytes starting at offset 6, my_array[3], and zfill to %r14
     movzw my_array(%rip),       %r15    # Another way to access an array
-    movzw my_array+4(%rip),     %r12    # With the offset before %rip
+    movzw my_array+4(%rip),     %r13    # With the offset before %rip
 
 
     # Finally, we will exit the program
