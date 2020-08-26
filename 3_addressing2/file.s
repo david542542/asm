@@ -1,7 +1,6 @@
 # More general form of memory addressing
 # Links: http://www.sig9.com/articles/att-syntax
-#        http://flint.cs.yale.edu/cs421/papers/x86-asm/asm.html#:~:text=Modern%20x86%2Dcompatible%20processors%20are,that%20specify%20addresses%20in%20memory.
-
+#        http://flint.cs.yale.edu/cs421/papers/x86-asm/asm.html
 # VARIABLES/LABELS
 .section .rodata
 my_array: .word 1,3,9,27
