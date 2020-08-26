@@ -1,0 +1,7 @@
+# Use this to ignore executables without an extension: https://stackoverflow.com/a/19023985/12283168
+*
+!/**/
+!*.*
+
+*.gdb_history
+*.o
