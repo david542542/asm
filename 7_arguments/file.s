@@ -28,11 +28,11 @@ _start:
     movss d(%rip), %xmm1 
     call add_floats
 
-    # To print the float registers
+    # To print the float registers (9.13 is the correct answer)
     # >>> p $xmm0.v4_float[0]
-    # $4 = 3.1400001
+    # $1 = 9.13000011
     # >>> p $xmm0.v2_double[0]
-    # $5 = 5.3286132608536752e-315
+    # $2 = 5.3937340773694265e-315
 
     # For now, let's just return the add_ints result as the exit code
     mov %eax, %edi
